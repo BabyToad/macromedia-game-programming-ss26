@@ -24,7 +24,8 @@ player_radius = 20
 player_moving_left = False
 player_moving_right = False
 player_movement_y = 0
-gravity = 0.1
+player_gravity = 0.1
+
 
 # ---- Bouncing circle (aus dem "Boing boing"-Beispiel) ----
 circle_x = 300.0
@@ -39,10 +40,14 @@ gravity = 0.1
 obstacles = []
 
 # Boden
-obstacles.append(pygame.Rect(5, SCREEN_HEIGHT - 10, SCREEN_WIDTH - 10, 10))
+obstacles.append( pygame.Rect(0, SCREEN_HEIGHT - 10, SCREEN_WIDTH, 10))
 
 # Plattform 001
-obstacles.append(pygame.Rect(200, SCREEN_HEIGHT - 60, 200, 10))
+obstacles.append( pygame.Rect(200, SCREEN_HEIGHT - 60, 200, 10))
+
+# Plattform 001
+obstacles.append( pygame.Rect(400, SCREEN_HEIGHT - 100, 100, 10))
+
 
 # ---- Status-Text ----
 status = "Wheee!"
@@ -80,8 +85,15 @@ while running:
         player_x -= 3
 
    # Player: Gravitation
-    player_movement_y += gravity
+    player_movement_y += player_gravity
     player_y += player_movement_y
+
+    def grav (on) :
+        if on == 1:
+            print (player_gravity)
+            player_gravity = 0.1
+        elif on == 0 :
+            player_gravity = 0.0    
 
     # Bouncing circle: Gravitation + Bewegung
     circle_movement_y += gravity
@@ -95,6 +107,36 @@ while running:
     # Bouncing circle: An den Seiten abprallen
     if circle_x <= circle_radius or circle_x >= SCREEN_WIDTH - circle_radius:
         circle_movement_x = -circle_movement_x
+
+    # Collision
+    player_collider = pygame.Rect (player_x , player_y, player_radius, player_radius)
+    
+   # def collision () :
+    #    player_movement_y = 0
+     ##   grav (0)
+
+        # Jump
+
+       # keys = pygame.key.get_pressed()
+        #if keys [pygame.K_SPACE]:
+         #   player_movement_y -= 5
+          #  grav (1)
+
+
+    if player_collider.collidelistall (obstacles) :
+        grav (0)
+        player_movement_y = 0
+        
+
+        # Jump
+        keys = pygame.key.get_pressed()
+        if keys [pygame.K_SPACE]:
+            grav (1)
+            player_movement_y -= 5
+            
+    else :
+       grav (0)
+
 
     # ---- Draw ----
     screen.fill(BACKGROUND_COL)
