@@ -23,6 +23,8 @@ player_y = 100.0
 player_radius = 20
 player_moving_left = False
 player_moving_right = False
+player_movement_y = 0
+gravity = 0.1
 
 # ---- Bouncing circle (aus dem "Boing boing"-Beispiel) ----
 circle_x = 300.0
@@ -76,6 +78,10 @@ while running:
         player_x += 3
     elif player_moving_left:
         player_x -= 3
+
+   # Player: Gravitation
+    player_movement_y += gravity
+    player_y += player_movement_y
 
     # Bouncing circle: Gravitation + Bewegung
     circle_movement_y += gravity
