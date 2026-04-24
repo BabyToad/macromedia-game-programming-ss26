@@ -62,6 +62,12 @@ Zwei Drittel selber schreiben, ein Drittel mit KI-Hilfe. Die KI erklaert, debugg
 - Uebungsloesungen
 - Alles in einer ZIP (max. 2.5 GB)
 
+## Playgrounds
+
+Kleine, lauffaehige Referenz-Projekte zum Reinschauen und Klauen:
+
+- [jump-playground/](jump-playground/) — Mario-Style Jump mit allen "Game Feel"-Tricks einzeln togglebar (Coyote Time, Jump Buffer, Variable Jump Height, Apex Hangtime, Asymmetric Gravity, Fast Fall). Companion zur Unit-03 Slide-Demo.
+
 ## Links
 
 - [pygame-ce Dokumentation](https://pyga.me/docs/)

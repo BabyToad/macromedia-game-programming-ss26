@@ -1,0 +1,11 @@
+[project]
+name = "pygame-jump-playground"
+version = "0.1.0"
+description = "Tunable 2D jump-feel playground — companion to Macromedia GPG Unit 03."
+requires-python = ">=3.11"
+dependencies = [
+    "pygame-ce>=2.5",
+]
+
+[tool.uv]
+package = false
